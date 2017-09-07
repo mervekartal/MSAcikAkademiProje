@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmClock.ShakePage"
+             BackgroundImage="img.jpeg">
+   
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        
+        <Label Text="Bil Bakalım..." FontSize="Large" 
+               TextColor="White"
+               FontFamily="Calibri"
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+        <Button Clicked="Button_OnnClicked"  
+                Text="Sor"
+                TextColor="White" 
+                BackgroundColor="#2196F3" 
+                HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+        <Label x:Name="txtSorular"
+               FontSize="Large" 
+               TextColor="White"
+               FontFamily="Calibri"
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+        
+        <StackLayout>
+            <Grid>
+                <Entry Keyboard="Default"
+                   x:Name="cevapEntry"
+                   Placeholder="Cevap Giriniz"
+                   Grid.Column="0"
+                   Grid.Row="1" 
+                   ></Entry>
+            </Grid>
+        </StackLayout>
+
+        <Label x:Name="lblUyar" 
+               FontSize="Large" 
+               TextColor="White"
+               FontFamily="Calibri"
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+        <Button Clicked="Button_Cvp" 
+                x:Name="buton"
+                Text="Tamam"
+                TextColor="White" 
+                BackgroundColor="#2196F3" 
+                HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+
+       
+
+
+
+        <!--<Button Text="Tamam" 
+                x:Name="bttn"
+                Clicked="ButtonClicked"></Button>-->   
+        
+       <!--<Label Text="{Binding ShakesLeft, StringFormat='{0:F0} DefaSallama'}" FontSize="Large" TextColor="Black"
+               HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>--> 
+         
+     <!--<Image Source="illuminati.png" HeightRequest="200" WidthRequest="200"
+               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+               Rotation="{Binding Rotation, Mode=TwoWay}"> 
+               </Image>-->   
+    </StackLayout>
+</ContentPage>

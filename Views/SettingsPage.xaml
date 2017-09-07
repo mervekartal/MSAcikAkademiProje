@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AlarmClock"
+             x:Class="AlarmClock.SettingsPage"
+             BackgroundImage="img.jpeg">
+
+    <StackLayout >
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="AYARLAR" FontSize="Large" Grid.Row="0" Margin="10,5,5,10"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label  Text="Saat" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Margin="10,0,0,10"/>
+                    
+                    <TimePicker HorizontalOptions="FillAndExpand" 
+                                Grid.Row="0" Grid.Column="1" Margin="5,0,0,5" 
+                                Time="{Binding Time, Mode=TwoWay}"/>
+
+                    <Label  Text="Alarm Adı" 
+                            VerticalOptions="Center" 
+                            Grid.Row="1" Grid.Column="0" 
+                            Margin="10,0,0,10"/>
+                    
+                    <Entry Text="{Binding Name, Mode=TwoWay}" 
+                           HorizontalOptions="FillAndExpand" 
+                           Grid.Row="1" Grid.Column="1" Margin="5,0,0,5"
+                           Keyboard="Text" Placeholder="İsim Giriniz"/>
+
+                    <Label  Text="Alarm Sesi" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Margin="10,0,0,10"/>
+                    
+                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Margin="5,0,0,5">
+                        
+                    <Label HorizontalOptions="FillAndExpand" BindingContext="{x:Reference Name=slider}"
+                   Text="{Binding Value}"/>
+                        
+                   <Stepper x:Name="slider" 
+                            HorizontalOptions="FillAndExpand" 
+                            Minimum="1" Maximum="10" Increment="1"
+                            Value="{Binding Interval, Mode=TwoWay}"/>
+                    </StackLayout>
+                </Grid>
+
+                <StackLayout HorizontalOptions="Fill" Orientation="Vertical" Grid.Row="2" Padding="10,0,0,10">
+                    <Label Text="Gün"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Ptsi" Grid.Column="0" Grid.Row="0"/>
+                        <Label Text="Sal" Grid.Column="1" Grid.Row="0"/>
+                        <Label Text="Çrş" Grid.Column="2" Grid.Row="0"/>
+                        <Label Text="Prş" Grid.Column="3" Grid.Row="0"/>
+                        <Label Text="Cuma" Grid.Column="4" Grid.Row="0"/>
+                        <Label Text="Cmtsi" Grid.Column="5" Grid.Row="0"/>
+                        <Label Text="Pzr" Grid.Column="6" Grid.Row="0"/>
+                        <Switch Grid.Column="0" Grid.Row="1" IsToggled="{Binding Pzt, Mode=TwoWay}"/>
+                        <Switch Grid.Column="1" Grid.Row="1" IsToggled="{Binding Sal, Mode=TwoWay}"/>
+                        <Switch Grid.Column="2" Grid.Row="1" IsToggled="{Binding Crs, Mode=TwoWay}"/>
+                        <Switch Grid.Column="3" Grid.Row="1" IsToggled="{Binding Prs, Mode=TwoWay}"/>
+                        <Switch Grid.Column="4" Grid.Row="1" IsToggled="{Binding Cum, Mode=TwoWay}"/>
+                        <Switch Grid.Column="5" Grid.Row="1" IsToggled="{Binding Cmt, Mode=TwoWay}"/>
+                        <Switch Grid.Column="6" Grid.Row="1" IsToggled="{Binding Pzr, Mode=TwoWay}"/>
+                    </Grid>
+                </StackLayout>
+                
+                <StackLayout  Grid.Row="3" Margin="10,0,0,10">
+                    
+                   
+                   
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Margin="10,0,10,10">
+            <Button Text="İptal" 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                    Clicked="OnCancelClicked"
+                    TextColor="White" BackgroundColor="#2196F3"/>
+            
+            <Button Text="Kaydet" 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                    Command="{Binding AddAlarmCommand}"
+                    Clicked="OnOKClicked" 
+                    TextColor="White" 
+                    BackgroundColor="#2196F3"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

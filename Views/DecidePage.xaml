@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlarmClock.DecidePage"
+             BackgroundImage="img.jpg"
+            >
+    
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        
+        <Label Text="Tercih" FontSize="Large" 
+               TextColor="Black"
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="CenterAndExpand" VerticalOptions="Start"/>
+        
+        <Grid VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button Text="Kapat" Grid.Column="0" BackgroundColor="Green"
+                    Command="{Binding ClickCancel}" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+            <Button Text="Ertele" Grid.Column="1" BackgroundColor="Orange"
+                    Command="{Binding ClickRepeat}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/> 
+        </Grid>
+    </StackLayout>
+</ContentPage>

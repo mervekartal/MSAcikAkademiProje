@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AlarmClock"
+             x:Class="AlarmClock.AlarmPage"
+             BackgroundImage="img.jpeg">
+    
+    <StackLayout HorizontalOptions="FillAndExpand" 
+                 VerticalOptions="FillAndExpand">
+
+        <Label Text="{Binding ClicksLeft, StringFormat='{0:F0} Defa Tıkla!'}" 
+               FontSize="Large" 
+               TextColor="Black"
+               HorizontalTextAlignment="Center" 
+               HorizontalOptions="CenterAndExpand"></Label>
+
+        <Image Source="zilli.png" HeightRequest="150" 
+               WidthRequest="150" x:Name="image"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand"
+               TranslationX="{Binding ButtonX, Mode=TwoWay}" TranslationY="{Binding ButtonY, Mode=TwoWay}"
+               Rotation="{Binding Rotation, Mode=TwoWay}">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Command="{Binding ClickCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+</ContentPage>

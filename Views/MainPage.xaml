@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AlarmClock"
+             xmlns:ncontrols="clr-namespace:NControl.Controls;assembly=NControl.Controls"
+             x:Class="AlarmClock.MainPage"
+             BackgroundImage="img.jpeg">
+  
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="100" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="100" />
+    </Grid.ColumnDefinitions>
+
+       
+
+    <ScrollView Grid.Row="1" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2" 
+                Grid.RowSpan="2">
+        
+      <ListView RowHeight="100" 
+                ItemsSource="{Binding AlarmList.Alarms}"
+                ItemSelected="OnListViewItemSelected">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.ContextActions>
+                  
+                <MenuItem 
+                    Clicked="OnDelete"
+                    Text="Sil" 
+                    IsDestructive="True" 
+                    CommandParameter="{Binding .}" />
+                  
+              </ViewCell.ContextActions>
+                
+              <ContentView Padding="5">
+                  <StackLayout Orientation="Horizontal">
+                      
+                    <Switch IsToggled="{Binding Enabled, Mode=TwoWay}" 
+                            Toggled="Switch_Toggled"/>
+                      
+                   <StackLayout>
+                       
+                         <Label Text="{Binding Time, StringFormat=\{0:h\\:mm\}}" FontSize="24" VerticalOptions="StartAndExpand"/>
+                         <Label Text="{Binding FullName}" FontSize="16" VerticalOptions="CenterAndExpand"/>
+                         <Label Text="{Binding Week}" FontSize="12" VerticalOptions="CenterAndExpand"/>
+                        
+                    </StackLayout> 
+                      
+                  </StackLayout>
+              </ContentView>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </ScrollView>
+
+
+        <Button Text="Alarm Ekle" FontSize="Medium"
+            Margin="0,15,20,15"
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            VerticalOptions="StartAndExpand"
+            Grid.Column="0" 
+            Clicked="OnAddButtonClicked" 
+            TextColor="White" 
+            BackgroundColor="#2196F3">
+        </Button>
+    </Grid>
+</ContentPage>
